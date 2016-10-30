@@ -10,13 +10,28 @@ import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class Application {
+    public static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        ShapeType shapeType = initShapeType();
+        Shape shape = initShape(shapeType);
+
+        shape.setShapeType(shapeType);
+        shape.displayProperties();
+        displayInnerShape(shape);
+    }
+
+    private static void displayInnerShape(Shape shape) {
+        if(shape instanceof Rectangular){
+            System.out.println("The shape consists of 2 equivalent triangles: ");
+            Triangle triangleInner = ((Rectangular) shape).getTriangle();
+            triangleInner.setShapeType(ShapeType.TRIANGLE);
+            triangleInner.displayProperties();
+        }
+    }
+
+    private static Shape initShape(ShapeType shapeType) {
         Shape shape = null;
-        ShapeType shapeType;
-
-        shapeType = initShapeType(scanner);
-
         switch (shapeType) {
             case TRIANGLE: {
                 System.out.println("Enter the length of the side a:");
@@ -48,19 +63,10 @@ public class Application {
                 shape = new Circle(radius);
             }
         }
-
-        shape.setShapeType(shapeType);
-        shape.displayProperties();
-
-        if(shape instanceof Rectangular){
-            System.out.println("The shape consists of 2 equivalent triangles: ");
-            Triangle triangleInner = ((Rectangular) shape).getTriangle();
-            triangleInner.setShapeType(ShapeType.TRIANGLE);
-            triangleInner.displayProperties();
-        }
+        return shape;
     }
 
-    private static ShapeType initShapeType(Scanner scanner) {
+    private static ShapeType initShapeType() {
         ShapeType shapeType;
         do{
             System.out.println("Please, enter the type of geometric figure: ");
