@@ -15,11 +15,7 @@ public class Application {
         Shape shape = null;
         ShapeType shapeType;
 
-        do{
-            System.out.println("Please, enter the type of geometric figure: ");
-            String userShapeType = scanner.nextLine();
-            shapeType = defineShapeType(userShapeType);
-        }while (null == shapeType);
+        shapeType = initShapeType(scanner);
 
         switch (shapeType) {
             case TRIANGLE: {
@@ -64,6 +60,16 @@ public class Application {
         }
     }
 
+    private static ShapeType initShapeType(Scanner scanner) {
+        ShapeType shapeType;
+        do{
+            System.out.println("Please, enter the type of geometric figure: ");
+            String userShapeType = scanner.nextLine();
+            shapeType = defineShapeType(userShapeType);
+        }while (null == shapeType);
+        return shapeType;
+    }
+
     private static ShapeType defineShapeType(String userShapeType) {
         ShapeType shapeType = null;
         try {
@@ -73,8 +79,8 @@ public class Application {
             for(ShapeType type : ShapeType.values()){
                 System.out.println(type);
             }
-        } finally {
-            return shapeType;
         }
+
+        return shapeType;
     }
 }
