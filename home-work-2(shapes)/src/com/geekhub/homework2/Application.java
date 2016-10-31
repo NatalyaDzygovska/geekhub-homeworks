@@ -16,7 +16,6 @@ public class Application {
         ShapeType shapeType = initShapeType();
         Shape shape = initShape(shapeType);
 
-        shape.setShapeType(shapeType);
         shape.displayProperties();
         displayInnerShape(shape);
     }
@@ -63,6 +62,7 @@ public class Application {
                 shape = new Circle(radius);
             }
         }
+        shape.setShapeType(shapeType);
         return shape;
     }
 

@@ -1,6 +1,5 @@
 package com.geekhub.homework2.shape.rectangle;
 
-import com.geekhub.homework2.shape.Shape;
 import com.geekhub.homework2.shape.Triangle;
 
 public class Square extends Rectangular {
