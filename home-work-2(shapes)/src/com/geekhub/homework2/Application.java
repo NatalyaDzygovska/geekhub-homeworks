@@ -1,12 +1,13 @@
 package com.geekhub.homework2;
 
-import com.geekhub.homework2.shape.*;
+import com.geekhub.homework2.shape.Circle;
+import com.geekhub.homework2.shape.Shape;
+import com.geekhub.homework2.shape.ShapeType;
+import com.geekhub.homework2.shape.Triangle;
 import com.geekhub.homework2.shape.rectangle.Rectangle;
 import com.geekhub.homework2.shape.rectangle.Rectangular;
 import com.geekhub.homework2.shape.rectangle.Square;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class Application {
