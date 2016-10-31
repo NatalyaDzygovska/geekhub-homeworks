@@ -1,7 +1,5 @@
 package com.geekhub.homework2.shape.rectangle;
 
-import com.geekhub.homework2.shape.Triangle;
-
 public class Square extends Rectangular {
     private double side;
 
@@ -18,10 +16,6 @@ public class Square extends Rectangular {
     @Override
     public void calculatePerimeter() {
         perimeter = side * 4;
-    }
-
-    public Triangle getTriangle() {
-        return triangle;
     }
 
     public double getSide() {

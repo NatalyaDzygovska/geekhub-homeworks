@@ -26,7 +26,7 @@ public class Triangle extends Shape {
     }
 
     @Override
-    public void displayProperties(){
+    public void displayProperties() {
         System.out.println("Side A = " + getRoundedNumber(sideA));
         System.out.println("Side B = " + getRoundedNumber(sideB));
         System.out.println("Side C = " + getRoundedNumber(sideC));
@@ -55,21 +55,5 @@ public class Triangle extends Shape {
 
     public void setSideC(double sideC) {
         this.sideC = sideC;
-    }
-
-    public double getArea() {
-        return area;
-    }
-
-    public void setArea(double area) {
-        this.area = area;
-    }
-
-    public double getPerimeter() {
-        return perimeter;
-    }
-
-    public void setPerimeter(double perimeter) {
-        this.perimeter = perimeter;
     }
 }

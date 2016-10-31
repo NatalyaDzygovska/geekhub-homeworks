@@ -22,11 +22,11 @@ public class Application {
 
     private static ShapeType initShapeType() {
         ShapeType shapeType;
-        do{
+        do {
             System.out.println("Please, enter the type of geometric figure: ");
             String userShapeType = scanner.nextLine();
             shapeType = defineShapeType(userShapeType);
-        }while (null == shapeType);
+        } while (null == shapeType);
         return shapeType;
     }
 
@@ -57,7 +57,7 @@ public class Application {
                 shape = new Rectangle(sideA, sideB);
                 break;
             }
-            case CIRCLE:{
+            case CIRCLE: {
                 System.out.println("Enter the length of the radius: ");
                 double radius = scanner.nextDouble();
                 shape = new Circle(radius);
@@ -68,7 +68,7 @@ public class Application {
     }
 
     private static void displayInnerShape(Shape shape) {
-        if(shape instanceof Rectangular){
+        if (shape instanceof Rectangular) {
             System.out.println("The shape consists of 2 equivalent triangles: ");
             Triangle triangleInner = ((Rectangular) shape).getTriangle();
             triangleInner.setShapeType(ShapeType.TRIANGLE);
@@ -82,7 +82,7 @@ public class Application {
             shapeType = ShapeType.valueOf(userShapeType.toUpperCase());
         } catch (IllegalArgumentException e) {
             System.out.println("Please, type one of available types: ");
-            for(ShapeType type : ShapeType.values()){
+            for (ShapeType type : ShapeType.values()) {
                 System.out.println(type);
             }
         }
