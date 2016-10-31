@@ -20,13 +20,14 @@ public class Application {
         displayInnerShape(shape);
     }
 
-    private static void displayInnerShape(Shape shape) {
-        if(shape instanceof Rectangular){
-            System.out.println("The shape consists of 2 equivalent triangles: ");
-            Triangle triangleInner = ((Rectangular) shape).getTriangle();
-            triangleInner.setShapeType(ShapeType.TRIANGLE);
-            triangleInner.displayProperties();
-        }
+    private static ShapeType initShapeType() {
+        ShapeType shapeType;
+        do{
+            System.out.println("Please, enter the type of geometric figure: ");
+            String userShapeType = scanner.nextLine();
+            shapeType = defineShapeType(userShapeType);
+        }while (null == shapeType);
+        return shapeType;
     }
 
     private static Shape initShape(ShapeType shapeType) {
@@ -66,14 +67,13 @@ public class Application {
         return shape;
     }
 
-    private static ShapeType initShapeType() {
-        ShapeType shapeType;
-        do{
-            System.out.println("Please, enter the type of geometric figure: ");
-            String userShapeType = scanner.nextLine();
-            shapeType = defineShapeType(userShapeType);
-        }while (null == shapeType);
-        return shapeType;
+    private static void displayInnerShape(Shape shape) {
+        if(shape instanceof Rectangular){
+            System.out.println("The shape consists of 2 equivalent triangles: ");
+            Triangle triangleInner = ((Rectangular) shape).getTriangle();
+            triangleInner.setShapeType(ShapeType.TRIANGLE);
+            triangleInner.displayProperties();
+        }
     }
 
     private static ShapeType defineShapeType(String userShapeType) {
@@ -86,7 +86,6 @@ public class Application {
                 System.out.println(type);
             }
         }
-
         return shapeType;
     }
 }
