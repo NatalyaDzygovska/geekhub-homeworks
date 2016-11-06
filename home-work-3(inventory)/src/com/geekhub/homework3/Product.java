@@ -14,4 +14,13 @@ public class Product {
     public double getPrice() {
         return price;
     }
+
+    public Category getCategory() {
+        return category;
+    }
+
+
+    public String getName() {
+        return name;
+    }
 }
