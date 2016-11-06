@@ -33,9 +33,9 @@ public class Inventory {
 
     public ArrayList<Product> getProductsByCategory(Category category) {
         ArrayList<Product> products = new ArrayList<>();
-        for(Map.Entry<Product, Integer> product : productCounts.entrySet()){
-            if (product.getKey().getCategory().equals(category)){
-                products.add(product.getKey());
+        for(Product product: productCounts.keySet()){
+            if (product.getCategory().equals(category)){
+                products.add(product);
             }
         }
         return products;
