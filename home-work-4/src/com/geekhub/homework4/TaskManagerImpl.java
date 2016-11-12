@@ -11,12 +11,13 @@ public class TaskManagerImpl implements TaskManager {
 
     @Override
     public void add(LocalDateTime date, Task task) {
+        task.setDate(date);
         tasks.put(date, task);
     }
 
     @Override
-    public void remove(LocalDateTime date) {
-        tasks.remove(date);
+    public Task remove(LocalDateTime date) {
+        return tasks.remove(date);
     }
 
     @Override
@@ -38,14 +39,18 @@ public class TaskManagerImpl implements TaskManager {
 
     @Override
     public List<Task> getTasksByCategory(Category category) {
-        return this.tasks.values().stream()
+        List<Task> tasks = this.tasks.values().stream()
                 .filter(task -> category.equals(task.getCategory())).collect(Collectors.toList());
+        Collections.sort(tasks, new TaskDateComparator());
+        return tasks;
     }
 
     @Override
     public List<Task> getTasksForToday() {
-        return this.tasks.keySet().stream()
+        List<Task> tasks = this.tasks.keySet().stream()
                 .filter(date -> date.toLocalDate().equals(LocalDate.now()))
                 .map(date -> this.tasks.get(date)).collect(Collectors.toList());
+        Collections.sort(tasks, new TaskDateComparator());
+        return tasks;
     }
 }
