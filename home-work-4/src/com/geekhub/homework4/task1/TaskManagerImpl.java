@@ -30,27 +30,23 @@ public class TaskManagerImpl implements TaskManager {
     @Override
     public Map<Category, List<Task>> getTasksByCategories(Category... categories) {
         Map<Category, List<Task>> tasksByCategories = new HashMap<>();
-        for (Category category : categories) {
-            List<Task> tasks = getTasksByCategory(category);
-            tasksByCategories.put(category, tasks);
-        }
+        Arrays.stream(categories).forEach(category -> tasksByCategories.put(category, getTasksByCategory(category)));
         return tasksByCategories;
     }
 
     @Override
     public List<Task> getTasksByCategory(Category category) {
-        List<Task> tasks = this.tasks.values().stream()
-                .filter(task -> category.equals(task.getCategory())).collect(Collectors.toList());
-        Collections.sort(tasks, new TaskDateComparator());
-        return tasks;
+        return this.tasks.values().stream()
+                .filter(task -> category.equals(task.getCategory()))
+                .sorted().collect(Collectors.toList());
     }
 
     @Override
     public List<Task> getTasksForToday() {
-        List<Task> tasks = this.tasks.keySet().stream()
-                .filter(date -> date.toLocalDate().equals(LocalDate.now()))
-                .map(date -> this.tasks.get(date)).collect(Collectors.toList());
-        Collections.sort(tasks, new TaskDateComparator());
-        return tasks;
+        LocalDate localDate = LocalDate.now();
+        return tasks.entrySet().stream()
+                .filter(taskEntry -> taskEntry.getKey().toLocalDate().equals(localDate))
+                .map(Map.Entry::getValue)
+                .sorted().collect(Collectors.toList());
     }
 }

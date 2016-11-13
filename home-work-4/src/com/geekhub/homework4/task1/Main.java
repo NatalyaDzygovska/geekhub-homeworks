@@ -13,9 +13,11 @@ public class Main {
         taskManager.add(LocalDateTime.of(2016, 11, 12, 9, 0), new Task("do home work", Category.GEEKHUB_TASKS));
         taskManager.add(LocalDateTime.of(2016, 11, 12, 15, 0), new Task("do home work", Category.GEEKHUB_TASKS));
         taskManager.add(LocalDateTime.of(2016, 11, 12, 10, 0), new Task("do home work", Category.GEEKHUB_TASKS));
-        taskManager.add(LocalDateTime.of(2016, 11, 12, 16, 0), new Task("do home work", Category.GEEKHUB_TASKS));
-        taskManager.add(LocalDateTime.of(2016, 11, 12, 11, 0), new Task("do home work", Category.GEEKHUB_TASKS));
         taskManager.add(LocalDateTime.of(2016, 11, 12, 17, 0), new Task("do home work", Category.GEEKHUB_TASKS));
+        taskManager.add(LocalDateTime.of(2016, 11, 14, 9, 0), new Task("do home work", Category.UNIVERSITY_TASKS));
+        taskManager.add(LocalDateTime.of(2016, 11, 14, 10, 0), new Task("do home work", Category.UNIVERSITY_TASKS));
+        taskManager.add(LocalDateTime.of(2016, 11, 14, 12, 0), new Task("do home work", Category.UNIVERSITY_TASKS));
+        taskManager.add(LocalDateTime.of(2016, 11, 14, 14, 0), new Task("do home work", Category.UNIVERSITY_TASKS));
 
         printCategories(taskManager);
 
