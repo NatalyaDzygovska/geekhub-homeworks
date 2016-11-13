@@ -6,15 +6,15 @@ public class ConsoleIO {
     private static Scanner scanner = new Scanner(System.in);
 
     public static int getIntFromUser() {
-        int userInput = scanner.nextInt();
         while (!scanner.hasNextInt()) {
             System.err.print("Wrong input, please enter a number: ");
+            scanner.next();
         }
-        return userInput;
+        return scanner.nextInt();
     }
 
     public static int getIntFromUser(int min, int max) {
-        int userInput = scanner.nextInt();
+        int userInput = getIntFromUser();
         while (userInput < min || userInput > max) {
             userInput = scanner.nextInt();
         }
