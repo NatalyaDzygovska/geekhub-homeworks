@@ -1,4 +1,4 @@
-package com.geekhub.homework4;
+package com.geekhub.homework4.task1;
 
 import java.util.Comparator;
 

@@ -1,4 +1,4 @@
-package com.geekhub.homework4;
+package com.geekhub.homework4.task1;
 
 public enum Category {
     GEEKHUB_TASKS,
