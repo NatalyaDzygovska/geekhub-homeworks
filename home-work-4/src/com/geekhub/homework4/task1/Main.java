@@ -26,9 +26,9 @@ public class Main {
     }
 
     private static void printTasksByCategories(TaskManager taskManager) {
-        for(Map.Entry<Category, List<Task>>  tasks: taskManager.getTasksByCategories(Category.values()).entrySet()){
+        for (Map.Entry<Category, List<Task>> tasks : taskManager.getTasksByCategories(Category.values()).entrySet()) {
             System.out.println(tasks.getKey());
-            for(Task task : tasks.getValue()){
+            for (Task task : tasks.getValue()) {
                 System.out.println(task.getDate());
             }
         }
@@ -36,7 +36,7 @@ public class Main {
 
     private static void printTasksForToday(TaskManager taskManager) {
         System.out.println("Tasks for today: ");
-        for (Task task : taskManager.getTasksForToday()){
+        for (Task task : taskManager.getTasksForToday()) {
             System.out.println("\t" + task.getDate());
         }
     }

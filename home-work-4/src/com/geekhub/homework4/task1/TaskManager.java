@@ -13,7 +13,7 @@ public interface TaskManager {
 
     Set<Category> getCategories();
 
-    Map<Category, List<Task>> getTasksByCategories(Category ... categories);
+    Map<Category, List<Task>> getTasksByCategories(Category... categories);
 
     List<Task> getTasksByCategory(Category category);
 
