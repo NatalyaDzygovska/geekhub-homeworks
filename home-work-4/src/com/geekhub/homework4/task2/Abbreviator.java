@@ -14,7 +14,7 @@ public class Abbreviator {
 
     private String abbreviate(String word) {
         if (word.length() >= LIMIT_LENGTH) {
-            word = "" + word.charAt(0) + (word.length()-2) + word.charAt(word.length() - 1);
+            word = "" + word.charAt(0) + (word.length() - 2) + word.charAt(word.length() - 1);
         }
         return word;
     }
