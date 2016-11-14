@@ -11,7 +11,6 @@ public class TaskManagerImpl implements TaskManager {
 
     @Override
     public void add(LocalDateTime date, Task task) {
-        task.setDate(date);
         tasks.put(date, task);
     }
 
@@ -38,7 +37,7 @@ public class TaskManagerImpl implements TaskManager {
     public List<Task> getTasksByCategory(Category category) {
         return this.tasks.values().stream()
                 .filter(task -> category.equals(task.getCategory()))
-                .sorted().collect(Collectors.toList());
+                .sorted(new TaskDateComparator(this)).collect(Collectors.toList());
     }
 
     @Override
@@ -47,6 +46,10 @@ public class TaskManagerImpl implements TaskManager {
         return tasks.entrySet().stream()
                 .filter(taskEntry -> taskEntry.getKey().toLocalDate().equals(localDate))
                 .map(Map.Entry::getValue)
-                .sorted().collect(Collectors.toList());
+                .sorted(new TaskDateComparator(this)).collect(Collectors.toList());
+    }
+
+    public Map<LocalDateTime, Task> getTasks() {
+        return tasks;
     }
 }
