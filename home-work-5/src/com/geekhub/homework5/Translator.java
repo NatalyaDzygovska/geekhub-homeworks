@@ -1,8 +1,14 @@
 package com.geekhub.homework5;
 
+import com.geekhub.homework5.source.SourceLoadingException;
 import com.geekhub.homework5.source.URLSourceProvider;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import java.io.IOException;
+import java.io.StringReader;
+import java.net.URLEncoder;
 
 /**
  * Provides utilities for translating texts to russian language.<br/>
@@ -32,8 +38,11 @@ public class Translator {
      * @throws IOException
      */
     public String translate(String original) throws IOException {
-        //TODO: implement me
-        return null;
+        try {
+            return parseContent(urlSourceProvider.load(prepareURL(original)));
+        } catch (SourceLoadingException e) {
+            throw new IOException(e);
+        }
     }
 
     /**
@@ -43,7 +52,8 @@ public class Translator {
      * @return url for translation specified text
      */
     private String prepareURL(String text) throws IOException {
-        return "https://translate.yandex.net/api/v1.5/tr/translate?key=" + YANDEX_API_KEY + "&text=" + encodeText(text) + "&lang=" + TRANSLATION_DIRECTION;
+        return "https://translate.yandex.net/api/v1.5/tr/translate?key=" + YANDEX_API_KEY + "&text="
+                + encodeText(text) + "&lang=" + TRANSLATION_DIRECTION;
     }
 
     /**
@@ -53,8 +63,15 @@ public class Translator {
      * @return translated text
      */
     private String parseContent(String content) throws IOException {
-        //TODO: implement me
-        return null;
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(TranslationResponse.class);
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            StringReader reader = new StringReader(content);
+            TranslationResponse response = (TranslationResponse) unmarshaller.unmarshal(reader);
+            return response.getText();
+        } catch (JAXBException e) {
+            throw new IOException(e);
+        }
     }
 
     /**
@@ -64,7 +81,6 @@ public class Translator {
      * @return encoded text
      */
     private String encodeText(String text) throws IOException {
-        //TODO: implement me
-        return null;
+        return URLEncoder.encode(text, "UTF-8");
     }
 }
