@@ -10,11 +10,17 @@ public class SourceLoader {
     private List<SourceProvider> sourceProviders = new ArrayList<>();
 
     public SourceLoader() {
-        //TODO: initialize me
+        sourceProviders.add(new FileSourceProvider());
+        sourceProviders.add(new URLSourceProvider());
     }
 
     public String loadSource(String pathToSource) throws SourceLoadingException {
-        //TODO: implement me
-        return null;
+        String content = null;
+        for(SourceProvider sourceProvider : sourceProviders){
+            if (sourceProvider.isAllowed(pathToSource)){
+                content = sourceProvider.load(pathToSource);
+            }
+        }
+        return content;
     }
 }
