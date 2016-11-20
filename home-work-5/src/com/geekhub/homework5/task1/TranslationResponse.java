@@ -1,4 +1,4 @@
-package com.geekhub.homework5;
+package com.geekhub.homework5.task1;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
@@ -11,8 +11,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class TranslationResponse {
 
     private int code;
-    String lang;
-    String text;
+    private String lang;
+    private String text;
 
     public int getCode() {
         return code;

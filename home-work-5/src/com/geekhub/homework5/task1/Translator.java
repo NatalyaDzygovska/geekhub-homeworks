@@ -1,7 +1,7 @@
-package com.geekhub.homework5;
+package com.geekhub.homework5.task1;
 
-import com.geekhub.homework5.source.SourceLoadingException;
-import com.geekhub.homework5.source.URLSourceProvider;
+import com.geekhub.homework5.task1.source.SourceLoadingException;
+import com.geekhub.homework5.task1.source.URLSourceProvider;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

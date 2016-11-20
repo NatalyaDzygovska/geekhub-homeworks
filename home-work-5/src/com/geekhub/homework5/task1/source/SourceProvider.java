@@ -1,4 +1,4 @@
-package com.geekhub.homework5.source;
+package com.geekhub.homework5.task1.source;
 
 /**
  * Base interface to access different sources.</br>

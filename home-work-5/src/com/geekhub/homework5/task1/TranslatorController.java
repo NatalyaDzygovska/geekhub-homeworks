@@ -1,8 +1,6 @@
-package com.geekhub.homework5;
+package com.geekhub.homework5.task1;
 
-import com.geekhub.homework5.source.SourceLoader;
-import com.geekhub.homework5.source.SourceLoadingException;
-import com.geekhub.homework5.source.URLSourceProvider;
+import com.geekhub.homework5.task1.source.*;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -19,6 +17,7 @@ public class TranslatorController {
         while(!"exit".equals(command)) {
             //TODO: add exception handling here to let user know about it and ask him to enter another path to translation
             //So, the only way to stop the application is to do that manually or type "exit"
+
             String source = sourceLoader.loadSource(command);
             String translation = translator.translate(source);
 
