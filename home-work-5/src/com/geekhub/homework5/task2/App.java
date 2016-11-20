@@ -20,17 +20,16 @@ public class App {
         String sourcePath = properties.getProperty("source.path");
         String outputPath = properties.getProperty("output.path");
 
-        for (String s : properties.getProperty("archive.types").split(",")) {
-            System.out.println(s);
+        ZipArchiver archiver = new ZipArchiver();
+        FileFinder fileFinder = new FileFinder();
 
-//            System.out.println(properties.getProperty("archive.type."+s).split());
-
+        for (String archiveType : properties.getProperty("archive.types").split(",")) {
+            System.out.println(archiveType);
+            String[] extensions = properties.getProperty("archive.type." + archiveType).split(",");
+            List<File> files = fileFinder.getFilesByExtensions(new File(sourcePath), extensions);
+            archiver.archive(files, outputPath+archiveType+".zip", sourcePath);
         }
 
-//        ZipArchiver archiver = new ZipArchiver();
-//        FileFinder fileFinder = new FileFinder();
-//        List<File> files = fileFinder.getFilesByExtensions(new File(sourcePath), MUSIC_EXTS);
-//        archiver.archive(files, outputPath, sourcePath);
 
 
     }
